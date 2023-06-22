@@ -3,7 +3,7 @@
 echo "Running lint..."
 make lint
 if [ $? -ne 0 ]; then
-  echo "Format failed, aborting commit."
+  echo "Linting failed, aborting commit."
   exit 1
 fi
 
