@@ -1,0 +1,33 @@
+#!/bin/sh
+
+echo "Running format..."
+make format
+if [ $? -ne 0 ]; then
+  echo "Format failed, aborting commit."
+  exit 1
+fi
+
+echo "Running typecheck..."
+make typecheck
+if [ $? -ne 0 ]; then
+  echo "Typecheck failed, aborting commit."
+  exit 1
+fi
+
+echo "Running security check..."
+make security
+if [ $? -ne 0 ]; then
+  echo "Security check failed, aborting commit."
+  exit 1
+fi
+
+echo "Running tests..."
+make test
+if [ $? -ne 0 ]; then
+  echo "Tests failed, aborting commit."
+  exit 1
+fi
+
+# Everything passed
+echo "All checks passed, proceeding with commit."
+exit 0

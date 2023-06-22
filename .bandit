@@ -1,0 +1,6 @@
+[bandit]
+exclude: /tests
+
+[profiles]
+my_profile:
+	skips: B101,B102,B103
