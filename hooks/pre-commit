@@ -1,5 +1,12 @@
 #!/bin/sh
 
+echo "Running lint..."
+make lint
+if [ $? -ne 0 ]; then
+  echo "Format failed, aborting commit."
+  exit 1
+fi
+
 echo "Running format..."
 make format
 if [ $? -ne 0 ]; then

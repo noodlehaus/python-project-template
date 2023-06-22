@@ -26,9 +26,10 @@ $ python3 -m venv .venv && source .venv/bin/activate
 
 Running `make hooks` installs a pre-commit hook on git. This pre-commit hoook runs
 
-    1. type checking with `mypy`
-    2. formatting with `black`
-    3. code security check with `bandit`
-    4. unit tests with `pytest`
+1. linting with `flake8`
+1. formatting with `black`
+1. type checking with `mypy`
+1. code security check with `bandit`
+1. unit tests with `pytest`
 
 Failure in any of the steps would stop the commit.

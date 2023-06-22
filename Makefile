@@ -10,11 +10,14 @@ hooks:
 	chmod +x hooks/pre-commit
 	cp hooks/pre-commit .git/hooks/
 
-typecheck:
-	mypy my_module/
+lint:
+	flake8 my_module/
 
 format:
 	black my_module/
+
+typecheck:
+	mypy my_module/
 
 security:
 	bandit -r my_module/
