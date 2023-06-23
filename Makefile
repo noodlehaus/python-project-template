@@ -1,5 +1,7 @@
 .PHONY: install freeze hooks typecheck format security test
 
+default: lint format typecheck security
+
 install:
 	pip install -r requirements.txt
 
@@ -14,10 +16,10 @@ lint:
 	flake8 my_module/
 
 format:
-	black my_module/
+	isort my_module/ tests/ && black my_module/ tests/
 
 typecheck:
-	mypy my_module/
+	mypy my_module/ tests/
 
 security:
 	bandit -r my_module/
