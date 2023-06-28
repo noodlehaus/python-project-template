@@ -1,3 +1,8 @@
+"""
+Sample Python module package.
+"""
+
+
 def hello(name: str) -> str:
     """
     Returns a greeting string.

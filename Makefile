@@ -1,28 +1,36 @@
-.PHONY: install freeze hooks typecheck format security test
+SOURCES = app.py my_module/
+TESTS = tests/
+
+.PHONY: venv reqs freeze hooks lint format typecheck security test
 
 default: lint format typecheck security
 
-install:
+venv:
+	@python3 -m venv .venv && \
+		echo "\nEnvironment created. Activate it with 'source .venv/bin/activate'."
+
+reqs:
 	pip install -r requirements.txt
 
 freeze:
 	pip freeze > requirements.txt
 
 hooks:
-	chmod +x hooks/pre-commit
 	cp hooks/pre-commit .git/hooks/
+	chmod +x .git/hooks/pre-commit
 
 lint:
-	flake8 my_module/
+	flake8 $(SOURCES) && pylint $(SOURCES)
 
 format:
-	isort my_module/ tests/ && black my_module/ tests/
+	isort $(SOURCES) $(TESTS) && \
+		black $(SOURCES) $(TESTS)
 
 typecheck:
-	mypy my_module/ tests/
+	mypy $(SOURCES) $(TESTS)
 
 security:
-	bandit -r my_module/
+	bandit -r $(SOURCES)
 
 test:
-	pytest tests/
+	pytest $(TESTS)
