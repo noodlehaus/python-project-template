@@ -5,17 +5,17 @@ This is a minimal Python project template.
 ## Instructions
 
 1. Install Python3 (of course).
-1. Clone this repository, remove the `.git` folder, then initialise.
+2. Clone this repository, remove the `.git` folder, then initialise.
 ```
 git clone https://github.com/noodlehaus/python-project-template <your-project-name>
 cd <project-name> && rm -rf .git
 git init
 ```
-1. Install the pre-commit hook.
+3. Install the pre-commit hook.
 ```
 make hooks
 ```
-1. Run make commands to setup the project.
+4. Run make commands to setup the project.
 ```
 # create and activate venv
 make venv && source .venv/bin/activate
@@ -23,8 +23,8 @@ make venv && source .venv/bin/activate
 # install initial deps (tools)
 make reqs
 ```
-1. Check `Makefile` so all your target files are specified in `SOURCES`.
-1. Run `make` to run the tool chain.
+5. Check `Makefile` so all your target files are specified in `SOURCES`.
+6. Run `make` to run the tool chain.
 
 ## Pre-commit Hook
 
